@@ -1,0 +1,14 @@
+diff --git a/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAE.cpp b/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAE.cpp
+index 543670b..2fe79ca 100644
+--- a/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAE.cpp
++++ b/xbmc/cores/AudioEngine/Engines/ActiveAE/ActiveAE.cpp
+@@ -1269,6 +1269,10 @@ void CActiveAE::ApplySettingsToFormat(AEAudioFormat &format, AudioSettings &sett
+   }
+   else
+   {
++    if (format.m_sampleRate < 48000)
++      format.m_sampleRate = 48000;
++
+     format.m_dataFormat = AE_FMT_FLOAT;
+     // consider user channel layout for those cases
+     // 1. input stream is multichannel
